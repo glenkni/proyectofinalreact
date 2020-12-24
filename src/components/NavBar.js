@@ -1,10 +1,11 @@
 import React from 'react';
+import CartWidget from './CartWidget';
 
 const NavBar = () => {
 
     return (
         <nav id="inicio" className="navbar sticky-top navbar-expand-md shadow" style={{backgroundColor:'black'}}>
-            <h1 className="text-white">FONI MUEBLES</h1>
+            <CartWidget/>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span className="navbar-toggler-icon"></span>
             </button>
