@@ -1,20 +1,18 @@
 import React from 'react';
 
-const Item = (i) => {
+const Item = ({id, name, description, price, image, stock}) => {
+
     
-    const [id, name, description] = i;
-
-
-
-
-
    
 
     return (
         <>
         <h3>Lista de Productos</h3>
-        <h4 key={i.id}>{i.name}</h4>
-        <p>{i.description}</p>                       
+        <h4 key={id}>{name}</h4>
+        <p>{description}</p> 
+        <img src={image} alt="foto producto"/>
+        <p>${price}</p>      
+        <p>Stock disponible: {stock}</p>             
         </>
     )
 }
