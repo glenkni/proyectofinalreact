@@ -9,22 +9,30 @@ function ItemListContainer() {
             id : 1,
             name : "Sillas comedor",
             description: "Sillas de madera con tapizado",
+            price: 150,
+            image: "/public/img/sillasexterior.jpg",
             stock: 5  
         }, {
             id : 2,
             name : "Mesa comedor",
             description: "Mesa comedor para 6 comensales" , 
+            price: 200,
+            image: "/public/img/mesacomedor.jpg",
             stock: 4
         }, {
             id : 3,
             name : "Mesa ratona",
             description: "Mesa ratona" ,
+            price: 100,
+            image: "/public/img/mesaratona.jpg",
             stock: 3
         }, {
             id : 4,
-            name : "Perchero",
-            description: "Perchero de madera" ,
-            stock:4
+            name : "Estante",
+            description: "Estante de madera" ,
+            price: 70,
+            image: "/public/img/estante.jpeg",
+            stock: 4
         }
         ];
 
@@ -32,16 +40,15 @@ function ItemListContainer() {
             let promesa = new Promise ((resolve, reject) => {
                 setTimeout(() => {
                     resolve(productos);
-                    reject('Hubo un problema');
                 }, 2000)
                 })
         
             promesa
-                .then((productos)=> {   
-                    setList(productos);     
+                .then((resultado)=> {   
+                    setList(resultado);     
                 })
-                .catch(()=>{
-                    console.log('Algo salio mal')
+                .catch((resultado)=>{
+                    console.log({resultado})
                 }) 
 
         },[])
