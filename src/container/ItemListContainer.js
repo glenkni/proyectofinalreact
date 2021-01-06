@@ -1,14 +1,56 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
+import ItemList from './ItemList';
 
-function ItemListContainer(props) {
+function ItemListContainer() {
 
-    const {greeting, greeting2} = props;
+        const [list, setList] = useState([]);
 
-    return (
+        const productos = [{
+            id : 1,
+            name : "Sillas comedor",
+            description: "Sillas de madera con tapizado",
+            stock: 5  
+        }, {
+            id : 2,
+            name : "Mesa comedor",
+            description: "Mesa comedor para 6 comensales" , 
+            stock: 4
+        }, {
+            id : 3,
+            name : "Mesa ratona",
+            description: "Mesa ratona" ,
+            stock: 3
+        }, {
+            id : 4,
+            name : "Perchero",
+            description: "Perchero de madera" ,
+            stock:4
+        }
+        ];
+
+        useEffect ( () => {
+            let promesa = new Promise ((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(productos);
+                    reject('Hubo un problema');
+                }, 2000)
+                })
+        
+            promesa
+                .then((productos)=> {   
+                    setList(productos);     
+                })
+                .catch(()=>{
+                    console.log('Algo salio mal')
+                }) 
+
+        },[])
+           
+    
+
+   return (
         <>
-            <h3 className="text-center text-black mt-3">{greeting}</h3>
-            <p className="text-black p-2">{greeting2}</p>         
-            
+        <ItemList list={list} />            
         </>
     )
 };
