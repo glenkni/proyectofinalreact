@@ -1,43 +1,49 @@
 import React, {useState, useEffect} from 'react';
 import ItemList from './ItemList';
 
+
+
 function ItemListContainer() {
 
         const [list, setList] = useState([]);
-
+      
         const productos = [{
             id : 1,
-            name : "Sillas comedor",
-            description: "Sillas de madera con tapizado",
+            name : "Sillas exterior",
+            description: "Sillas bajas de exterior con base de hierro",
             price: 150,
-            image: "/public/img/sillasexterior.jpg",
-            stock: 5  
+            image: "https://i.ibb.co/C5RcSB2/sillasexterior.jpg",
+            stock: 5,
+            categoryId: "sillas"  
         }, {
             id : 2,
             name : "Mesa comedor",
-            description: "Mesa comedor para 6 comensales" , 
+            description: "Mesa comedor para 6 comensales con patas de hierro" , 
             price: 200,
-            image: "/public/img/mesacomedor.jpg",
-            stock: 4
+            image: "https://i.ibb.co/w4K3nsJ/mesacomedor.jpg",
+            stock: 4,
+            categoryId: "mesas"
         }, {
             id : 3,
             name : "Mesa ratona",
-            description: "Mesa ratona" ,
+            description: "Mesa ratona con base de hierro" ,
             price: 100,
-            image: "/public/img/mesaratona.jpg",
-            stock: 3
+            image: "https://i.ibb.co/rbHgj66/mesaratona.jpg",
+            stock: 3,
+            cateogryId: "mesas"
         }, {
             id : 4,
             name : "Estante",
-            description: "Estante de madera" ,
+            description: "Estante de madera petiribi" ,
             price: 70,
-            image: "/public/img/estante.jpeg",
-            stock: 4
+            image: "https://i.ibb.co/zSbhd61/estante.jpg",
+            stock: 4,
+            categoryId: "estantes"
         }
         ];
 
         useEffect ( () => {
-            let promesa = new Promise ((resolve, reject) => {
+            const promesa = new Promise ((resolve, reject) => {
                 setTimeout(() => {
                     resolve(productos);
                 }, 2000)
@@ -52,12 +58,16 @@ function ItemListContainer() {
                 }) 
 
         },[])
-           
+    
+    
     
 
    return (
         <>
+        <h2 className="mt-5 text-center">Lista de productos</h2>
+        <div className="d-flex flex-row">
         <ItemList list={list} />            
+        </div>
         </>
     )
 };
