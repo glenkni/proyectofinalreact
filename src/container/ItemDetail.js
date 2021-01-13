@@ -10,7 +10,7 @@ const ItemDetail = ({id, name, price, image, description, stock}) => {
                 <h5 className="card-title" key={id}>{description}</h5>
                 <p>${price}</p>
                 <p>Stock disponible: {stock}</p>
-                <a href="#" className="btn btn-primary">Agregar</a>
+                <button className="btn-primary">Agregar al carrito</button>
             </div>
         </div>
         </>

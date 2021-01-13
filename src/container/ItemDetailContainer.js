@@ -3,7 +3,7 @@ import ItemDetail from './ItemDetail';
 import {useParams} from 'react-router-dom';
 
 const products = [{
-    id : 1,
+    id: 1,
     name : "Sillas exterior",
     description: "Sillas bajas de exterior con base de hierro",
     price: 150,
@@ -11,7 +11,7 @@ const products = [{
     stock: 5,
     categoryId: "sillas"  
 }, {
-    id : 2,
+    id: 2,
     name : "Mesa comedor",
     description: "Mesa comedor para 6 comensales con patas de hierro" , 
     price: 200,
@@ -19,7 +19,7 @@ const products = [{
     stock: 4,
     categoryId: "mesas"
 }, {
-    id : 3,
+    id: 3,
     name : "Mesa ratona",
     description: "Mesa ratona con base de hierro" ,
     price: 100,
@@ -27,7 +27,7 @@ const products = [{
     stock: 3,
     cateogryId: "mesas"
 }, {
-    id : 4,
+    id: 4,
     name : "Estante",
     description: "Estante de madera petiribi" ,
     price: 70,
@@ -41,27 +41,26 @@ function ItemDetailContainer () {
 
     const [item, setItem] = useState();
     const {id} = useParams();
+    
 
     useEffect ( () => {
         const getItems = new Promise ((resolve,reject) => {
             setTimeout(() => {
-                const i = products.find(product => products.id === id)
+                const i = products.find(product => product.id == id)
                 resolve(i)
             }, 2000)
         })
         getItems
             .then(result => setItem(result))
-            .catch(err => console.log("algo salio mal"))
-    }, [])
+            .catch(err => console.log("hubo un error"))
+    }, [id])
 
     return (
         <div> {
             item 
-            ?
-            <ItemDetail id={item.id} name={item.name} image={item.image} price={item.price} description={item.description}
+            ? <ItemDetail id={item.id} name={item.name} image={item.image} price={item.price} description={item.description}
             stock={item.stock}/>
-            :
-            <p>Estamos cargando el producto...</p>
+            : <p className="text-center p-3">Estamos cargando el producto...</p>
             
             }
             

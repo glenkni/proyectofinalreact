@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const Item = ({item}) => {
-
-    const {id, name, image, price, stock} = item;
+const Item = ({id, name, image, stock, price}) => {  
 
     
    
@@ -16,7 +14,9 @@ const Item = ({item}) => {
                 <h5 className="card-title" key={id}>{name}</h5>
                 <p>${price}</p>
                 <p>Stock disponible: {stock}</p>
-                <button className='btn btn-primary'>Mas detalle</button>
+                <button className='btn btn-primary'>
+                    <Link className="text-white" to={"/item/" + id}>Más detalle</Link>
+                </button>
             </div>
         </div>
         </>
