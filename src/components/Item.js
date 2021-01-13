@@ -1,12 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const Item = ({id, name, image, stock, price}) => {  
-
-    
-   
-
-    return (
+const Item = ({id, name, image, stock, price, description}) => {  
+     return (
         <> 
         <div className="card m-5" style={{width: 220}}>
             <img className="card-img-top" src={image} alt="Card image cap"/>

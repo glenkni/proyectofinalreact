@@ -8,8 +8,8 @@ export const ItemList = ({products}) => {
     return (
         
         <div className="d-flex flex-row">
-            { products.map( product => <Item key={product.id} 
-            name={product.name} image={product.image} stock={product.stock} price={product.price} />)
+            { products.map( product => <Item id={product.id} 
+            name={product.name} image={product.image} stock={product.stock} price={product.price} description={product.description} />)
             }
         </div>
     )
