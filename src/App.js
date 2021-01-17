@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import ItemListContainer from './container/ItemListContainer';
 import ItemCount from './components/ItemCount';
 import ItemDetailContainer from './container/ItemDetailContainer';
+import Cart from "./components/Cart";
 
 const products = [{
   id : 1,

@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import {useHistory} from "react-router-dom"
+import Cart from "./Cart"
 
 function ItemCount ({stock, initial, onAdd, condicion}) {
     const [contador, setContador] = useState (0);
@@ -22,17 +24,23 @@ function ItemCount ({stock, initial, onAdd, condicion}) {
             onAdd(contador)
     }
    
+    const history = useHistory();
+
+    function CartBoton () {
+        history.push("/cart");
+    }
+
+
+
 
     return (
         <>  
             <div className='container-fluid'>
-                <p>Stock: {stock} </p>
-                <button  disabled={contador > max} onClick={aumentarContador}>+</button>
-                <button disabled={contador < min}  onClick={restarContador}>-</button> 
+                <button className="m-2" disabled={contador > max} onClick={aumentarContador}>+</button>
+                <button className="m-2" disabled={contador < min}  onClick={restarContador}>- </button> 
                 <p className='pt-2'>Items agregados: {contador}</p>
-                {condicion ? <button onClick={agregarAlCarrito}>Agregar</button>
-                            : <button>Comprar </button>}
-                
+                <button onClick={agregarAlCarrito}>Agregar</button>
+                {!condicion && <button onClick={CartBoton}>Comprar</button>}                
             </div>
         </>
     )
