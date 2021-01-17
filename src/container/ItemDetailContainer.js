@@ -9,6 +9,7 @@ const products = [{
     price: 150,
     image: "https://i.ibb.co/C5RcSB2/sillasexterior.jpg",
     stock: 5,
+    initial: 1,
     categoryId: "sillas"  
 }, {
     id: 2,
@@ -17,6 +18,7 @@ const products = [{
     price: 200,
     image: "https://i.ibb.co/w4K3nsJ/mesacomedor.jpg",
     stock: 4,
+    initial: 1,
     categoryId: "mesas"
 }, {
     id: 3,
@@ -25,6 +27,7 @@ const products = [{
     price: 100,
     image: "https://i.ibb.co/rbHgj66/mesaratona.jpg",
     stock: 3,
+    initial: 1,
     cateogryId: "mesas"
 }, {
     id: 4,
@@ -33,6 +36,7 @@ const products = [{
     price: 70,
     image: "https://i.ibb.co/zSbhd61/estante.jpg",
     stock: 4,
+    initial: 1,
     categoryId: "estantes"
 }
 ];
@@ -58,8 +62,8 @@ function ItemDetailContainer () {
     return (
         <div> {
             item 
-            ? <ItemDetail id={item.id} name={item.name} image={item.image} price={item.price} description={item.description}
-            stock={item.stock}/>
+            ? <ItemDetail key={item.id} id={item.id} name={item.name} image={item.image} price={item.price} description={item.description}
+            stock={item.stock} initial={item.initial}/>
             : <p className="text-center p-3">Estamos cargando el producto...</p>
             
             }

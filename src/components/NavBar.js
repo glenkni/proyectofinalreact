@@ -12,7 +12,7 @@ const categories = [{
 },{
     categoryId: "estantes",
     name: "ESTANTES"
-}]
+}, ]
 
 function NavBar () {
     return (
@@ -24,7 +24,7 @@ function NavBar () {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse d-flex justify-content-end">
-                { categories.map( category => <Link className="text-white p-2"to={`/category/${category.categoryId}`}> <p>{category.name}</p> </Link>)} 
+                { categories.map( category => <Link className="text-white p-2" to={`/category/${category.categoryId}`}> <p>{category.name}</p> </Link>)} 
             </div>
         </nav>
     )

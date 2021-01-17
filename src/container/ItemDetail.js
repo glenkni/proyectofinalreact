@@ -1,6 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
+import ItemCount from '../components/ItemCount'
+import {Link} from 'react-router-dom'
 
-const ItemDetail = ({id, name, price, image, description, stock}) => {
+const ItemDetail = ({id, name, price, image, description, stock, initial}) => {
+    const [contador, setContador] = useState (null);
+    const [condBoton, setCondBoton] = useState (true);
+
+    const onAdd = cant => {
+        console.log ("Agregaste" + cant + "items")
+        setContador(cant)
+        setCondBoton(false)
+    }
+
+
     return (
         <> 
         <div className="card m-5" style={{width: 220}}>
@@ -10,7 +22,8 @@ const ItemDetail = ({id, name, price, image, description, stock}) => {
                 <h5 className="card-title" key={id}>{description}</h5>
                 <p>${price}</p>
                 <p>Stock disponible: {stock}</p>
-                <button className="btn-primary">Agregar al carrito</button>
+                <ItemCount stock={stock} initial={initial} onAdd={onAdd} condicion={condBoton} />
+        
             </div>
         </div>
         </>
