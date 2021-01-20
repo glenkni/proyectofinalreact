@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import ItemCount from '../components/ItemCount'
-import {Link} from 'react-router-dom'
+
 
 const ItemDetail = ({id, name, price, image, description, stock, initial}) => {
     const [contador, setContador] = useState (null);
@@ -23,7 +23,7 @@ const ItemDetail = ({id, name, price, image, description, stock, initial}) => {
                     <h5 className="card-title" key={id}>{description}</h5>
                     <p>${price}</p>
                     <p>Stock disponible: {stock}</p>
-                    <ItemCount stock={stock} initial={initial} onAdd={onAdd} condicion={condBoton} />
+                    <ItemCount name={name} stock={stock} initial={initial} onAdd={onAdd} condicion={condBoton} contador={contador}/>
             
                 </div>
             </div>

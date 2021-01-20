@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar';
 import ItemListContainer from './container/ItemListContainer';
-import ItemCount from './components/ItemCount';
 import ItemDetailContainer from './container/ItemDetailContainer';
+import CartProvider from "./components/CartContext"
 import Cart from "./components/Cart";
 
 const products = [{
@@ -41,8 +41,9 @@ const products = [{
   categoryId: "estantes"
 }
 ];
+const ThemeContext = React.createContext();
 
-function App() {
+function App() {  
 
   const [items, setItems] = useState([]);
         
@@ -66,21 +67,25 @@ function App() {
   
   return (
     <>
-      <BrowserRouter>
-        <NavBar/>
-        <Switch>
-          <Route exact path="/">
-            <ItemListContainer titulo="Lista de productos" products={items} />
-          </Route>
-          <Route exact path="/category/:id">
-            <ItemListContainer titulo="Lista de productos" products={items} />
-          </Route>
-          <Route exact path="/item/:id">
-            <ItemDetailContainer/>
-          </Route>
-          <ItemCount min={1} max={5} onAdd={()=> {console.log('lo agregaste!')}}/>
-        </Switch>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <NavBar/>
+          <Switch>
+            <Route exact path="/">
+              <ItemListContainer titulo="Lista de productos" products={items} />
+            </Route>
+            <Route exact path="/category/:id">
+              <ItemListContainer titulo="Lista de productos" products={items} />
+            </Route>
+            <Route exact path="/item/:id">
+              <ItemDetailContainer/>
+            </Route>
+            <Route exact path="/cart">
+            <Cart />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </CartProvider>
     </>
   );
 }

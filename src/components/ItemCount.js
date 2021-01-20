@@ -1,9 +1,10 @@
-import React, {useState} from "react";
-import {useHistory} from "react-router-dom"
-import Cart from "./Cart"
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom'
+import { CartContext } from './CartContext';
 
-function ItemCount ({stock, initial, onAdd, condicion}) {
+function ItemCount ({stock, initial, onAdd, condicion, name}) {
     const [contador, setContador] = useState (0);
+    const { addItem } = useContext(CartContext)
 
     const min = initial;
     const max = stock;
@@ -20,15 +21,18 @@ function ItemCount ({stock, initial, onAdd, condicion}) {
             setContador (contador - 1)
         }
     }
-        const agregarAlCarrito = ()=> {
+        const agregarAlCarrito = (name, id,contador)=> {
             onAdd(contador)
+            addItem(name, id)
     }
    
-    const history = useHistory();
+    {/*const history = useHistory();
 
     function CartBoton () {
         history.push("/cart");
-    }
+    */}
+
+    
 
 
 
@@ -40,7 +44,7 @@ function ItemCount ({stock, initial, onAdd, condicion}) {
                 <button className="m-2" disabled={contador < min}  onClick={restarContador}>- </button> 
                 <p className='pt-2'>Items agregados: {contador}</p>
                 <button onClick={agregarAlCarrito}>Agregar</button>
-                {!condicion && <button onClick={CartBoton}>Comprar</button>}                
+                {!condicion && <Link to="/cart"> <button>Comprar</button></Link>}                
             </div>
         </>
     )
